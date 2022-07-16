@@ -1,14 +1,14 @@
 # Social_Isolation
 
 - Topic: Predicting social isolation among young people in their 20's
-- Period:  ~ 2022.
+- Period: Apr.01.2022 ~ Jul.02.2022
+- data: Korea Institute of Public Administration's Survey on Social Integration in 2021
 
 
+# Analysis Processes
+### 1. Preprocessing
+- Filtering data from 1,277 people in 
 
-- 데이터: 한국 행정 연구원의 2021사회 통합 실태조사 설문조사
-
-# 분석 과정
-### 1. 데이터 필터링
 - 20대인 1277명의 데이터 추출
 - 독립변수 44개 선정
 
