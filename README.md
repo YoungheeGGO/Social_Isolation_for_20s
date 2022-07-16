@@ -7,7 +7,6 @@
 
 # Analysis Processes
 ### 1. Preprocessing
-- Filtering data from 1,277 people in 
 
 - 20대인 1277명의 데이터 추출
 - 독립변수 44개 선정
