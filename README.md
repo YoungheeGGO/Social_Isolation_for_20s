@@ -1,6 +1,10 @@
 # Social_Isolation
 
-- 주제: 20대 청년의 사회적 고립도 예측
+- Topic: Predicting social isolation among young people in their 20's
+- Period:  ~ 2022.
+
+
+
 - 데이터: 한국 행정 연구원의 2021사회 통합 실태조사 설문조사
 
 # 분석 과정
