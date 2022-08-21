@@ -7,14 +7,14 @@
 
 # Analysis Processes
 ### 1. Preprocessing
-
-- 20대인 1277명의 데이터 추출
-- 독립변수 44개 선정
+- Data Filtering who are in their 20s  -> # of row is 1,277
+- Choosing 44 independent variable
 
 ### 2. Dependent Variables
-- 관계적 고립, 정서적 고립, 통합적 고립으로 나누어 분석 진행
-- 각 고립별로 측정할 수 있는 문항 5개, 3개, 8개 선별 -> 답변의 총합 사용
-- 3가지 측면을 비교할 수 있게 min-max Scaling 진행
+- "Social Isolation" was separated into 3 specific isolation: relation isolation, emotional isolation, total isolation
+- Selected the 5,3, and 8 questions measuring the 3 different social isolation. -> sum of scored answer.
+- Min-Max scaling for comparing the 3 social isolation.
+
 
 ### 3. Modeling
 - Linear Regression
@@ -24,17 +24,23 @@
 - DNN
 </br>
 
-- Rmse가 가장 낮은 Catboost가 최종모형으로 선정됨.
-- 부스팅 계열의 모델이 성능이 좋은 것을 보고, lightGBM과 XGboost도 시도해봤지만, 설문지 데이터라서 그런지, 범주형 catboost가 제일 성능이 좋았다!
+- The final model is Catboost with the lowest test-RMSE.
 
 ### 4. Interpreting the Model
-- 부스팅 계열의 모델은 약한 학습기를 여러개 연결하여 학습하는 방법이기 때문에 모형해석에 있어 큰 어려움을 겪는다.
-- 따라서, 본 프로젝트에서는 설명가능한 인공지능(XAI)기법을 활용해 catboost를 해석하려고 하였고, model-agnostic한 방법 중, SHAP기법을 활용해 진행하였다.
+- I had known there is hard interpreting for boosting-line models with combined many weak learners.
+- So, I tried to interpret the catboost model by applying the SHAP, one of the model-agnostic methods for XAI.
+
 
 # What I learned
-- 개인적으로 모형 선정 과정에서 DNN이 사용될 것이라고 생각했는데, 생각보다 부스팅 기법이 성능이 좋아서 놀랐다. 아마도 딥러닝을 돌리기에 충분한 학습 데이터가 아니었나보다. 1,277\*0.8=1,021개의 훈련 데이터여서 딥러닝 관점에서는 역전파를 진행할때, 충분한 학습이 진행되지 않은 것 같다.
-- 딥러닝은 능사가 아니라는 것을 배웠다. (개인적으로는 이 프로젝트 하기 전까지만해도 머신러닝보다 딥러닝이 더 최신 기법이어서 더욱 우수하다고 생각했었다.) 더 나아가, 학습 모델에 대한 평가방법에 대한 생각도 해보았다. 모형을 비교하는 과정에 있어서, 메트릭별로 최종모형이 달라진다면, 어떤 메트릭을 사용해야 설득력이 있을까?? + 특정 메트릭을 사용했을 때, 예측력이 높으면 그 모형의 "우수성"을 논할 수 있을까?? 모형의 우수성이란, 예측력 + 해석력만으로 정의되는 것인가?
+- In my personal opinion, I had thought the DNN methods will record the lowest test-RMSE. In reality, that was not true. I was surprised by the boosting method's performance. Maybe the 1,021 data (1,277\*0.8) was not enough to train the deep learning at backpropagation.
+- So, I learned Deep Neural Net is not super in some cases. (Before this project, I had thought DNN is the best method because a more recent method than machine learning.) Furthermore, I thought about the model evaluation metric. If the final model has changed by the used metric in comparing models, What metric will be more persuasive? + Can I say the model superiorness just with the metric? And, Is The model superiorness defined only to predicting and interpreting?
+- 
+
+
+
 - XAI 개념들을 직접 구현해보면서 직접 설명을 해보았다. 게임이론을 기반으로 하는 SHAP 기법에 대한 이론적 기반을 공부하였고, 어떠한 원리로 SHAP vlaue가 계산되는지를 배웠다.
+
+
 - 마지막으로 제일 중요한 리더십을 배울 수 있었다. 원래는 나(팀장) 포함 3명이 팀으로 진행되었지만, 한 명이 매우 비협조적인 태도로 본인 할당량을 해오지 않거나, 매우 뺀질(?) 거렸다. 그래서 다른 팀원과 내가 개인 할당량 이상의 것을 해내야하는 상황이었고, 비협조적인 팀원이 본인의 일을 3번 정도 해오지 않자, 나는 그냥 그 팀원의 이름을 빼버렸다. 아무리 이야기를 해도 팀원은 변화되는 모습을 보여주지 않았다. 다행히도, 팀원 변경이 가능했다! 하지만 팀원 변경을 할 수 없을때, 이러한 팀원을 어떻게 데리고 가야할 지는 잘 모르겠다. 그냥 운이 나빴다고 생각하며 팀원이 변경될 때 까지 다른 팀원과 내가 주어진 일 이상의 것을 해야하는 거겠지...? 하지만 팀 단위로 성과를 내는 것이기 때문에, 일은 다른 사람들이 다 했는데 하나도 하지 않고 팀 내 성과를 홀라당 가져가는 것도 너무 너무 싫을 것 같다. 그냥 이런 팀원을 더 이상 만나지 않길 바란다. 여태 나랑 같이 프로젝트를 했던 친구들이 새삼 고마웠다. 다들 열심히 해주었기 때문에 그동안의 프로젝트에서는 팀 내부의 이슈가 없었는데, 이번 프로젝트에서 처음으로 이러한 상황을 접해보고 나름의 대처를 해보았다. 다음에도 이러한 상황이 생기면 더 현명하게 대처해봐야지.
 
 
