@@ -19,12 +19,10 @@
 ### 3. Modeling
 - Linear Regression
 - SVR
-- Catboost
+- Catboost: This is the final model with the lowest test-RMSE.
 - Random Forest
 - DNN
-</br>
 
-- The final model is Catboost with the lowest test-RMSE.
 
 ### 4. Interpreting the Model
 - I had known there is hard interpreting for boosting-line models with combined many weak learners.
