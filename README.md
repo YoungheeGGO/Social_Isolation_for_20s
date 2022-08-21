@@ -7,7 +7,7 @@
 
 # Analysis Processes
 ### 1. Preprocessing
-- Data Filtering who are in their 20s  -> # of row is 1,277
+- Data Filtering who are in their 20s  => # of row is 1,277
 - Choosing 44 independent variable
 
 ### 2. Dependent Variables
